@@ -1,0 +1,52 @@
+<html>
+    <head>
+        <title>Add Book</title>
+    </head>
+    <body>
+        <h1>Add Book</h1>
+        <form action="/books" method="post">
+        <table>
+            <tr>
+                <td>Title:</td>
+                <td><input type="text" name="title" /></td>
+            </tr>
+            <tr>
+                <td>Author:</td>
+                <td><input type="text" name="author" /></td>
+            </tr>
+            <tr>
+                <td>In series?</td>
+                <td><input type="checkbox" name="in_series" /></td>
+            </tr>
+            <tr>
+                <td>Series name:</td>
+                <td><input type="text" name="series_name" /></td>
+            </tr>
+            <tr>
+                <td>Book in series:</td>
+                <td><input type="text" name="book_in_series" /></td>
+            </tr>
+            <tr>
+                <td>ISBN:</td>
+                <td><input type="text" name="isbn" /></td>
+            </tr>
+            <tr>
+                <td>Year published:</td>
+                <td><input type="text" name="pub_year" /></td>
+            </tr>
+            <tr>
+                <td>Was it read?</td>
+                <td><input type="checkbox" name="was_it_read" /></td>
+            </tr>
+            <tr>
+                <td>Date read:</td>
+                <td><input type="text" name="date_read" /></td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td><input type="submit" value="Add book" /></td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<html>
+    <head>
+        <title>Book List</title>
+    </head>
+    <body>
+        <h1>Book List</h1>
+        <a href="/books/add">Add</a>
+        <table border="1">
+            <tr>
+                <td>Title</td>
+                <td>Author</td>
+                <td>In Series?</td>
+                <td>Series Name</td>
+                <td>Book in Series</td>
+                <td>ISBN</td>
+                <td>Pub Year</td>
+                <td>Read?</td>
+                <td>Read Date</td>
+                <td>Edit?</td>
+            </tr>
+            {% for book in books %}
+            <tr>
+                <td>{{ book.title }}</td>
+                <td>{{ book.author }}</td>
+                <td>{{ book.in_series }}</td>
+                <td>{{ book.series_name }}</td>
+                <td>{{ book.book_in_series }}</td>
+                <td>{{ book.isbn }}</td>
+                <td>{{ book.pub_year }}</td>
+                <td>{{ book.was_read }}</td>
+                <td>{{ book.completed_date }}</td>
+                <td><a href="/books/edit/{{ book.key().id() }}">Edit</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </body>
+</html>
