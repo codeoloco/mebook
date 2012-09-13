@@ -5,6 +5,7 @@ from datetime import datetime
 import constants
 from models import Book
 from edit_book import EditBookController
+from delete_book import DeleteBookController
 from google.appengine.api import users
 from google.appengine.ext import db
 
@@ -71,7 +72,7 @@ class BooksController(webapp2.RequestHandler):
                 book.completed_date = None
 
             book.put()
-            
+
             self.redirect('/books')
 
         else:
@@ -88,6 +89,7 @@ app = webapp2.WSGIApplication([
     ('/books', BooksController),
     ('/books/add', AddBookController),
 	('/books/edit', EditBookController),
-    ('/books/edit/([\d]+)', EditBookController)
+    ('/books/edit/([\d]+)', EditBookController),
+    ('/books/delete/([\d]+)', DeleteBookController)
     ],
     debug=True)

@@ -17,6 +17,7 @@
                 <td>Read?</td>
                 <td>Read Date</td>
                 <td>Edit?</td>
+                <td>Delete?</td>
             </tr>
             {% for book in books %}
             <tr>
@@ -30,6 +31,7 @@
                 <td>{{ book.was_read }}</td>
                 <td>{{ book.completed_date }}</td>
                 <td><a href="/books/edit/{{ book.key().id() }}">Edit</a></td>
+                <td><a href="/books/delete/{{ book.key().id() }}">Delete</a></td>
             </tr>
             {% endfor %}
         </table>
