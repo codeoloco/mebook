@@ -1,0 +1,43 @@
+html {
+    background-color: #e2e2e2;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #efeeef;
+    border-top: solid 10px #000;
+    color: #333;
+    font-size: .85em;
+    font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, h3,
+h4, h5, h6 {
+    color: #000;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+h1 {
+    font-size: 2em;
+}
+
+.float-left {
+    float: left;
+}
+
+.table_header {
+    background-color: #9966FF;
+    color: #FFFFFF;
+}
+
+.tb_row1 {
+    background-color: #FFFFFF;
+}
+
+.tb_row2 {
+    background-color: #CCCCFF;
+}
