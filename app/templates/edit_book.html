@@ -1,0 +1,53 @@
+<html>
+    <head>
+        <title>Edit Book</title>
+    </head>
+    <body>
+        <h1>Edit Book</h1>
+        <form action="/books/edit" method="post">
+		<input type="hidden" name="book_id" value="{{ book.key().id() }}" />
+        <table>
+            <tr>
+                <td>Title:</td>
+                <td><input type="text" name="title" value="{{ book.title }}"/></td>
+            </tr>
+            <tr>
+                <td>Author:</td>
+                <td><input type="text" name="author" value="{{ book.author }}" /></td>
+            </tr>
+            <tr>
+                <td>In series?</td>
+                <td><input type="checkbox" name="in_series" /></td>
+            </tr>
+            <tr>
+                <td>Series name:</td>
+                <td><input type="text" name="series_name" value="{{ book.series_name }}"/></td>
+            </tr>
+            <tr>
+                <td>Book in series:</td>
+                <td><input type="text" name="book_in_series" value="{{ book.book_in_series }}"/></td>
+            </tr>
+            <tr>
+                <td>ISBN:</td>
+                <td><input type="text" name="isbn" value="{{ book.isbn }}" /></td>
+            </tr>
+            <tr>
+                <td>Year published:</td>
+                <td><input type="text" name="pub_year" value="{{ book.pub_year }}"/></td>
+            </tr>
+            <tr>
+                <td>Was it read?</td>
+                <td><input type="checkbox" name="was_it_read" /></td>
+            </tr>
+            <tr>
+                <td>Date read:</td>
+                <td><input type="text" name="date_read" value="{{ book.completed_date }}" /></td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td><input type="submit" value="Update book" /></td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

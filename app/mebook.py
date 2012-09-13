@@ -3,25 +3,14 @@ import jinja2
 import os
 from datetime import datetime
 import constants
-
+from models import Book
+from edit_book import EditBookController
 from google.appengine.api import users
 from google.appengine.ext import db
 
 TEMPLATE_DIR = os.path.join(os.path.dirname(__file__), 'templates')
 jinja_environment = jinja2.Environment(
         loader=jinja2.FileSystemLoader(TEMPLATE_DIR))
-
-class Book(db.Model):
-    username = db.StringProperty()
-    title = db.StringProperty()
-    author = db.StringProperty()
-    in_series = db.BooleanProperty()
-    series_name = db.StringProperty()
-    book_in_series = db.IntegerProperty()
-    isbn = db.StringProperty()
-    pub_year = db.IntegerProperty()
-    was_read = db.BooleanProperty()
-    completed_date = db.DateProperty()
 
 def bookshelf_key(bookshelf_name=None):
     """
@@ -94,7 +83,11 @@ class AddBookController(webapp2.RequestHandler):
         template_values = {}
         self.response.out.write(template.render(template_values))
 
-app = webapp2.WSGIApplication([('/', BooksController),
-                              ('/books', BooksController),
-                              ('/books/add', AddBookController)],
-                              debug=True)
+app = webapp2.WSGIApplication([
+    ('/', BooksController),
+    ('/books', BooksController),
+    ('/books/add', AddBookController),
+	('/books/edit', EditBookController),
+    ('/books/edit/([\d]+)', EditBookController)
+    ],
+    debug=True)
