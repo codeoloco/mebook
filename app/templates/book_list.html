@@ -1,12 +1,14 @@
 <html>
     <head>
-        <title>Book List</title>
+        <title>Book List for {{ user.nickname() }}</title>
+        <link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
     </head>
     <body>
-        <h1>Book List</h1>
-        <a href="/books/add">Add</a>
-        <table border="1">
-            <tr>
+        <div class="float-left">
+        <h1>Book List for {{ user.nickname() }}</h1>
+        <table border="0" cellpadding="3" cellspacing="0">
+        <tr><td colspan="11" align="right"><a href="/books/add">Add Book</a></td></tr>
+           <tr class="table_header">
                 <td>Title</td>
                 <td>Author</td>
                 <td>In Series?</td>
@@ -20,20 +22,21 @@
                 <td>Delete?</td>
             </tr>
             {% for book in books %}
-            <tr>
+            <tr class="{% if loop.index is divisibleby(2) %}tb_row1{% else %}tb_row2{% endif %}">
                 <td>{{ book.title }}</td>
                 <td>{{ book.author }}</td>
-                <td>{{ book.in_series }}</td>
-                <td>{{ book.series_name }}</td>
-                <td>{{ book.book_in_series }}</td>
+                <td align="center">{% if book.in_series %}&radic;{% else %}&nbsp;{% endif %}</td>
+                <td align="center">{{ book.series_name }}</td>
+                <td align="center">{% if book.book_in_series %}{{ book.book_in_series }}{% endif %}</td>
                 <td>{{ book.isbn }}</td>
-                <td>{{ book.pub_year }}</td>
-                <td>{{ book.was_read }}</td>
-                <td>{{ book.completed_date }}</td>
+                <td align="center">{% if book.pub_year %}{{ book.pub_year }}{% endif %}</td>
+                <td>{% if book.was_read %}&radic;{% else %}&nbsp;{% endif %}</td>
+                <td>{{ book.get_formatted_completed_date() }}</td>
                 <td><a href="/books/edit/{{ book.key().id() }}">Edit</a></td>
                 <td><a href="/books/delete/{{ book.key().id() }}">Delete</a></td>
             </tr>
             {% endfor %}
         </table>
+        </div>
     </body>
 </html>

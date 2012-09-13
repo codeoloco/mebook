@@ -1,6 +1,7 @@
 <html>
     <head>
         <title>Edit Book</title>
+        <link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
     </head>
     <body>
         <h1>Edit Book</h1>
@@ -17,7 +18,7 @@
             </tr>
             <tr>
                 <td>In series?</td>
-                <td><input type="checkbox" name="in_series" /></td>
+                <td><input type="checkbox" name="in_series" {% if book.in_series %}checked="on"{% endif %} /></td>
             </tr>
             <tr>
                 <td>Series name:</td>
@@ -25,7 +26,8 @@
             </tr>
             <tr>
                 <td>Book in series:</td>
-                <td><input type="text" name="book_in_series" value="{{ book.book_in_series }}"/></td>
+                <td><input type="text" name="book_in_series" 
+                    value="{% if book.book_in_series %}{{ book.book_in_series }}{% endif %}"/></td>
             </tr>
             <tr>
                 <td>ISBN:</td>
@@ -33,15 +35,16 @@
             </tr>
             <tr>
                 <td>Year published:</td>
-                <td><input type="text" name="pub_year" value="{{ book.pub_year }}"/></td>
+                <td><input type="text" name="pub_year" 
+                    value="{% if book.pub_year %}{{ book.pub_year }}{% endif %}"/></td>
             </tr>
             <tr>
                 <td>Was it read?</td>
-                <td><input type="checkbox" name="was_it_read" /></td>
+                <td><input type="checkbox" name="was_it_read" {% if book.was_read %}checked="on"{% endif %}/></td>
             </tr>
             <tr>
                 <td>Date read:</td>
-                <td><input type="text" name="date_read" value="{{ book.completed_date }}" /></td>
+                <td><input type="text" name="date_read" value="{{ book.get_formatted_completed_date() }}" /></td>
             </tr>
             <tr>
                 <td>&nbsp;</td>

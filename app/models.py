@@ -11,3 +11,9 @@ class Book(db.Model):
     pub_year = db.IntegerProperty()
     was_read = db.BooleanProperty()
     completed_date = db.DateProperty()
+
+    def get_formatted_completed_date(self):
+        if self.completed_date:
+            return self.completed_date.strftime('%m/%d/%Y')
+        else:
+            return ""

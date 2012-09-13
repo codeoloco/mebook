@@ -29,7 +29,8 @@ class BooksController(webapp2.RequestHandler):
                     bookshelf_key(user.nickname()))
 
             template_values = {
-                'books': books
+                'books': books,
+                'user': user
             }
             template = jinja_environment.get_template('book_list.html')
             self.response.out.write(template.render(template_values))
