@@ -1,7 +1,8 @@
 import webapp2
 import jinja2
 import os
-from datetime import datetime
+import logging
+from datetime import datetime, date
 import constants
 from models import Book
 from edit_book import EditBookController
@@ -67,9 +68,11 @@ class BooksController(webapp2.RequestHandler):
             else:
                 book.was_read = False
             try:
-                book.completed_date = datetime.strptime(
-                    self.request.get('date_read'), '%m/%d/%Y')
-            except:
+                cdt = datetime.strptime(self.request.get('date_read'), '%m/%d/%Y')
+                cd = date(cdt.year, cdt.month, cdt.day)
+                book.completed_date = cd
+            except Exception, e:
+                logging.info("exception getting read date : " + str(e))
                 book.completed_date = None
 
             book.put()
